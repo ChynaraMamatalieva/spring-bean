@@ -10,5 +10,17 @@ public class App {
         HelloWorld bean =
                 (HelloWorld) applicationContext.getBean("helloworld");
         System.out.println(bean.getMessage());
+
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        Cat cat = context.getBean("cat", Cat.class);
+        System.out.println(cat.getName()+" "+cat.getAge());
+
+
+        Cat cat1 = context.getBean("cat", Cat.class);
+        System.out.println(cat1.getName()+" "+cat1.getAge());
+
+        Boolean comparison = cat.equals(cat1);
+        System.out.println("comparison = " + comparison);
+
     }
 }
